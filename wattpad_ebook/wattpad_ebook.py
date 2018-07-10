@@ -97,7 +97,7 @@ def generate_mobi_file(name, author, output_profile):
 
     subprocess.Popen(shlex.split(cmd))
     time.sleep(10)
-    logger.info('Generated AZW3 successfully', extra=d)
+    logger.info('Generated MOBI file successfully', extra=d)
 
 
 def send_email(name):
@@ -158,7 +158,8 @@ def main(url, profile, folder):
 
 
 def cli():
-    profiles = ['generic_eink', 'kindle', 'kindle_dx', 'kindle_fire', 'kindle_oasis',
+    profiles = ['generic_eink', 'kindle', 'kindle_dx',
+                'kindle_fire', 'kindle_oasis',
                 'kindle_pw', 'kindle_pw3', 'kindle_voyage', 'kobo']
 
     argp = argparse.ArgumentParser()
@@ -166,13 +167,15 @@ def cli():
                                   'must starts with https://www.wattpad.com/',
                       type=str)
     argp.add_argument('-f', '--folder', help="Folder ID you want upload into,"
-                                             "if not file will upload " 
+                                             "if not file will upload "
                                              "into home")
     argp.add_argument('-p', '--profile', help=('Profile you want generate,'
-                                              'profiles: [generic_eink, kindle, kindle_dx, '
-                                              'kindle_fire, kindle_oasis,
-                                              'kindle_pw, kindle_pw3, kindle_voyage, kobo]'
-                                              'default: Kindle Paperwhite 3'),
+                                               'profiles: [generic_eink, '
+                                               'kindle, kindle_dx, '
+                                               'kindle_fire, kindle_oasis,'
+                                               'kindle_pw, kindle_pw3, kindle_'
+                                               'voyage, kobo]'
+                                               'default: Kindle Paperwhite 3'),
                       default='kindle_pw3')
     args = argp.parse_args()
 
@@ -180,7 +183,7 @@ def cli():
     profile = args.profile
     folder_id = args.folder
 
-    if not url.startwith(BASE_URL) or not profile in profiles:
+    if not url.startswith(BASE_URL) or profile not in profiles:
         argp.print_help()
 
     main(url, profile, folder_id)
