@@ -1,5 +1,5 @@
 # wattpad_ebook
-Generate ebook from Wattpad, upload into Google Drive and send to Kindle
+Generate ebook from Wattpad and send to Kindle
 
 
 Installation
@@ -31,8 +31,6 @@ Options
 -------
 
 -p, --profile: Output profile that you want generate for your Kindle
-
--f, --folder:  Folder ID you want upload to Google Drive, if not it will upload into home
 
 Features
 --------

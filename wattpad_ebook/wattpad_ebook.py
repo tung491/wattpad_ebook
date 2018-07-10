@@ -133,20 +133,7 @@ def send_email(name):
     logger.info('Sent email successfully', extra=d)
 
 
-def upload(name, folder):
-    filename = name + '.mobi'
-
-    logger.info('Uploading %s', filename, extra=d)
-    if folder:
-        cmd = 'gdrive upload -p {} "{}"'.format(folder, filename)
-    else:
-        cmd = 'gdrive upload {}'.format(filename)
-    subprocess.Popen(shlex.split(cmd))
-
-    logger.info('Uploaded %s successfully', filename, extra=d)
-
-
-def main(url, profile, folder):
+def main(url, profile):
     name, author, links = crawl_all_chaps(url)
     if name.find('/') != -1:
         name = name.replace('/', '-')
@@ -154,7 +141,6 @@ def main(url, profile, folder):
     generate_html_file(links, name)
     generate_mobi_file(name, author, profile)
     send_email(name)
-    upload(name, folder)
 
 
 def cli():
@@ -166,9 +152,6 @@ def cli():
     argp.add_argument('url', help='Wattpad link you want generate '
                                   'must starts with https://www.wattpad.com/',
                       type=str)
-    argp.add_argument('-f', '--folder', help="Folder ID you want upload into,"
-                                             "if not file will upload "
-                                             "into home")
     argp.add_argument('-p', '--profile', help=('Profile you want generate,'
                                                'profiles: [generic_eink, '
                                                'kindle, kindle_dx, '
@@ -181,12 +164,11 @@ def cli():
 
     url = args.url
     profile = args.profile
-    folder_id = args.folder
 
     if not url.startswith(BASE_URL) or profile not in profiles:
         argp.print_help()
 
-    main(url, profile, folder_id)
+    main(url, profile)
 
 
 if __name__ == "__main__":
