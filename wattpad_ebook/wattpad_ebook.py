@@ -2,7 +2,6 @@ from requests_html import HTMLSession
 
 import subprocess
 import shlex
-import sys
 import time
 import logging
 import os
@@ -13,13 +12,17 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.base import MIMEBase
 from email import encoders
 
+from socket import gethostname, gethostbyname
+
 BASE_URL = 'https://www.wattpad.com'
 
 FORMAT = '%(asctime)-15s %(clientip)s %(user)-8s %(message)s'
 logging.basicConfig(level=logging.INFO, format=FORMAT)
 
 logger = logging.getLogger(__name__)
-d = {'clientip': '192.168.0.1', 'user': 'tung491'}
+d = {'clientip': gethostbyname(gethostname()),
+     'user': os.getenv('USERNAME')
+     }
 
 
 def crawl_all_chaps(link):
@@ -151,7 +154,7 @@ def main(url, profile, folder):
     generate_html_file(links, name)
     generate_mobi_file(name, author, profile)
     send_email(name)
-    upload(name, folder)Công cụ trí tuệ nhân tạo của hãng thương mại điện tử Trung Quốc - Alibaba - có thể tạo ra 20.000 dòng quảng cáo chỉ trong 1 giây.
+    upload(name, folder)
 
 
 def cli():
@@ -166,7 +169,9 @@ def cli():
                                              "if not file will upload " 
                                              "into home")
     argp.add_argument('-p', '--profile', help=('Profile you want generate,'
-                                              'profiles:' ','.join(profiles) +
+                                              'profiles: [generic_eink, kindle, kindle_dx, '
+                                              'kindle_fire, kindle_oasis,
+                                              'kindle_pw, kindle_pw3, kindle_voyage, kobo]'
                                               'default: Kindle Paperwhite 3'),
                       default='kindle_pw3')
     args = argp.parse_args()
