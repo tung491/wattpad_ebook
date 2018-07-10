@@ -7,7 +7,7 @@ Installation
 
 By using pip:
 
-    `pip install wattpad-ebook`
+    pip install wattpad-ebook
 
 
 Usage
