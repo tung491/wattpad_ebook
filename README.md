@@ -30,9 +30,9 @@ Type your options and link you want to generate
 Options
 -------
 
--p, --profile       Output profile that you want generate for your Kindle
+-p, --profile: Output profile that you want generate for your Kindle
 
--f, --folder        Folder ID you want upload to Google Drive, if not it will upload into home
+-f, --folder:  Folder ID you want upload to Google Drive, if not it will upload into home
 
 Features
 --------
