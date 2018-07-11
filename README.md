@@ -24,7 +24,8 @@ Type your options and link you want to generate
 Options
 -------
 
--p, --profile: Output profile that you want generate for your Kindle
+| -p, --profile 	| Output profile that you want generate for your Kindle 	|
+|---------------	|-------------------------------------------------------	|
 
 
 Profiles
