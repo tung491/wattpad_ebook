@@ -32,10 +32,25 @@ Options
 
 -p, --profile: Output profile that you want generate for your Kindle
 
+
+Profiles
+---------
+
+| Profile       	| Device                	|
+|---------------	|-----------------------	|
+| kindle        	| Kindle 201..          	|
+| kindle_dx     	| Kindle DX             	|
+| kindle_fire   	| Kindle Fire           	|
+| kindle_oasis  	| Kindle Oasis 1, 2     	|
+| kindle_pw     	| Kindle Paperwhite 1,2 	|
+| kindle_pw3    	| Kindle Paperwhite 3   	|
+| kindle_voyage 	| Kindle Voyage         	|
+|               	|                       	|
+
 Features
 --------
 
-- Don't need cable to copy ebook to your Kindle                              
+- Don't need cable to copy ebook to your Kindle.                        
 
 Author
 ------

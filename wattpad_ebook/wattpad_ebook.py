@@ -100,6 +100,14 @@ def generate_mobi_file(name, author, output_profile):
     logger.info('Generated MOBI file successfully', extra=d)
 
 
+def remove_html_file(name):
+    filename = name + '.mobi'
+    try:
+        os.remove(filename)
+    except FileNotFoundError:
+        pass
+
+
 def send_email(name):
     from_ = os.getenv('GMAIL_USERNAME')
     to = os.getenv('KINDLE_EMAIL')
@@ -140,6 +148,7 @@ def main(url, profile):
 
     generate_html_file(links, name)
     generate_mobi_file(name, author, profile)
+    remove_html_file(name)
     send_email(name)
 
 
