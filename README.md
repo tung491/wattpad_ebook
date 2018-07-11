@@ -6,14 +6,8 @@ Installation
 -------------
 
 By using pip:
-    `pip install wattpad-ebook`
 
-Requirements
--------------
-
-Download and install [gdrive](https://github.com/prasmussen/gdrive)
-
-Step-by-step tutorial [here](http://olivermarshall.net/how-to-upload-a-file-to-google-drive-from-the-command-line/)
+    pip install wattpad-ebook
 
 
 Usage
