@@ -1,18 +1,17 @@
-from requests_html import HTMLSession
-
-import subprocess
-import shlex
-import time
+import argparse
 import logging
 import os
-import argparse
-
+import shlex
 import smtplib
-from email.mime.multipart import MIMEMultipart
-from email.mime.base import MIMEBase
-from email import encoders
+import subprocess
+import time
 
+from email import encoders
+from email.mime.base import MIMEBase
+from email.mime.multipart import MIMEMultipart
 from socket import gethostname, gethostbyname
+
+from requests_html import HTMLSession
 
 BASE_URL = 'https://www.wattpad.com'
 
@@ -91,7 +90,7 @@ def generate_mobi_file(name, author, output_profile):
         '--output-profile {profile} --level1-toc //h:h2 '
         '--authors "{author}" --title "{name}"'
     )
-    logger.info('Generating AZW3 file', extra=d)
+    logger.info('Generating MOBI file', extra=d)
     cmd = cmd_tpl.format(name=name, profile=output_profile,
                          author=author)
 
@@ -153,21 +152,17 @@ def main(url, profile):
 
 
 def cli():
-    profiles = ['generic_eink', 'kindle', 'kindle_dx',
+    profiles = ['kindle', 'kindle_dx',
                 'kindle_fire', 'kindle_oasis',
-                'kindle_pw', 'kindle_pw3', 'kindle_voyage', 'kobo']
-
+                'kindle_pw', 'kindle_pw3', 'kindle_voyage']
+    profile_help = """Output profile you want to generate for your Kindle, \n
+                   default: Kindle Paperwhite 3.
+                   """
     argp = argparse.ArgumentParser()
     argp.add_argument('url', help='Wattpad link you want generate '
                                   'must starts with https://www.wattpad.com/',
                       type=str)
-    argp.add_argument('-p', '--profile', help=('Profile you want generate,'
-                                               'profiles: [generic_eink, '
-                                               'kindle, kindle_dx, '
-                                               'kindle_fire, kindle_oasis,'
-                                               'kindle_pw, kindle_pw3, kindle_'
-                                               'voyage, kobo]'
-                                               'default: Kindle Paperwhite 3'),
+    argp.add_argument('-p', '--profile', help=profile_help,
                       default='kindle_pw3')
     args = argp.parse_args()
 
