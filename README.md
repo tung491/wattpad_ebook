@@ -39,7 +39,7 @@ Profiles
 | kindle_pw     	| Kindle Paperwhite 1,2 	|
 | kindle_pw3    	| Kindle Paperwhite 3   	|
 | kindle_voyage 	| Kindle Voyage         	|
-|               	|                       	|
+
 
 Features
 --------
