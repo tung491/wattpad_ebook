@@ -14,6 +14,10 @@ By using pip:
 
 Usage
 ------
+Install `calibre` by command:
+
+    sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin
+
 Set var `GMAIL_USERNAME`, `GMAIL_PASSWORD` and `KINDLE_EMAIL` by command `export var=value`
 
 Change Google account access for less secure apps to send email [here](https://support.google.com/accounts/answer/6010255?authuser=2).
