@@ -1,6 +1,8 @@
 # wattpad_ebook
-Generate ebook from Wattpad and send to Kindle
+Generate ebook from Wattpad stories and send to Kindle
 
+
+[![Build Status](https://travis-ci.org/tung491/wattpad_ebook.svg?branch=master)](https://travis-ci.org/tung491/wattpad_ebook)
 
 Installation
 -------------
