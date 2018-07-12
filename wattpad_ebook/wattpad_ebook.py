@@ -69,8 +69,7 @@ def generate_html_file(links, name):
                       {}
                   </h2>
                   <br><br>
-                  <p>    'requests', 'pyquery', 'fake-useragent', 'parse', 'bs4', 'w3lib', 'pyppeteer>=0.0.14'
-
+                  <p>
                     {}
                   </p>
                   <br><br><br>
