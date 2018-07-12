@@ -32,7 +32,7 @@ def crawl_all_chaps(link):
     author = r.html.xpath('//div[@class="author hidden-lg"]/a[2]/text()')[0]
 
     urls = r.html.xpath('//ul[@class="table-of-contents"]/li/a/@href')
-    links = list(map(lambda x: BASE_URL + x, urls))
+    links = [BASE_URL + url for url in urls]
 
     return name, author, links
 
@@ -69,7 +69,8 @@ def generate_html_file(links, name):
                       {}
                   </h2>
                   <br><br>
-                  <p>
+                  <p>    'requests', 'pyquery', 'fake-useragent', 'parse', 'bs4', 'w3lib', 'pyppeteer>=0.0.14'
+
                     {}
                   </p>
                   <br><br><br>
@@ -136,14 +137,13 @@ def send_email(name):
     text = msg.as_string()
     server.sendmail(from_, to, text)
     server.quit()
-
+    attachment.close()
     logger.info('Sent email successfully', extra=d)
 
 
 def main(url, profile):
     name, author, links = crawl_all_chaps(url)
-    if name.find('/') != -1:
-        name = name.replace('/', '-')
+    name = name.replace('/', '-')
 
     generate_html_file(links, name)
     generate_mobi_file(name, author, profile)
@@ -160,7 +160,7 @@ def cli():
                    """
     argp = argparse.ArgumentParser()
     argp.add_argument('url', help='Wattpad link you want generate '
-                                  'must starts with https://www.wattpad.com/',
+                                  'must start with https://www.wattpad.com/',
                       type=str)
     argp.add_argument('-p', '--profile', help=profile_help,
                       default='kindle_pw3')

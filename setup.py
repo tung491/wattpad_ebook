@@ -7,10 +7,10 @@ requisites = []
 
 setup(
     name='wattpad_ebook',
-    version='0.0.7',
-    description='Generate ebook from Wattpad, '
-                'upload into Google Drive and send to Kindle',
-    author='Do Son Tung',
+    version='1.0.1',
+    description='Generate ebook from Wattpad '
+                'and send to Kindle',
+    author='Son Tung Do',
     url='https://github.com/tung491/wattpad_ebook',
     author_email='dosontung007@gmail.com',
     packages=['wattpad_ebook'],
